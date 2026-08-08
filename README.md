@@ -1,72 +1,85 @@
 # Dese Consulting
 
-Ürün Takip Sistemi (ÜTS) ve mevzuat danışmanlığı web sitesi.
+Ürün Takip Sistemi (ÜTS) ve mevzuat danışmanlığı web sitesi — **Astro** ile statik site.
 
 **Canlı site:** [www.deseconsulting.com](https://www.deseconsulting.com/)
 
 ## Özellikler
 
+- Astro 5 (SSG, sıfır gereksiz JS)
+- Content Collections ile duyuru / makale sayfaları
+- CoSteps benzeri SSS makale düzeni (breadcrumb, içerik, yan panel)
 - Responsive tasarım (mobil, tablet, masaüstü)
-- Ana sayfa hero bölümü
-- Hakkımızda
-- Danışmanlık hizmetleri (ÜTS kayıt, bildirim, STE, ÜGDR vb.)
-- SSS (Sık Sorulan Sorular) — TİTCK mevzuatına dayalı
-- Duyurular / haberler bölümü
-- Referanslar
-- İletişim formu
-- Mobil menü
+- Ana sayfa: hero, hizmetler, SSS accordion, duyurular, iletişim
+- Mobil menü ve scroll reveal
+
+## Geliştirme
+
+```bash
+npm install
+npm run dev
+```
+
+Tarayıcıda: `http://localhost:4321`
+
+Örnek SSS sayfası:
+
+`/duyurular/sorumlu-teknik-eleman-ve-urun-guvenlilik-degerlendirme-hakkinda-sik-sorulan-sorular/`
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+Çıktı: `dist/`
 
 ## Dosya Yapısı
 
 ```
 uts_danismanlik/
-├── index.html      # Ana sayfa
-├── CNAME           # Özel domain (GitHub Pages)
-├── css/
-│   └── style.css   # Stiller
-├── js/
-│   └── main.js     # Etkileşimler (menü, SSS, form)
-├── .cursor/
-│   └── skills/
-│       └── ui-ux-pro-max/   # UI/UX Pro Max design skill
-└── README.md
+├── src/
+│   ├── components/     # Header, Footer, FaqAccordion
+│   ├── content/        # Markdown duyurular (content collection)
+│   ├── layouts/        # BaseLayout, SiteLayout
+│   ├── pages/          # index + duyurular/[slug]
+│   ├── scripts/        # Menü, SSS, form
+│   └── styles/         # Global CSS (Dese design tokens)
+├── public/CNAME
+├── astro.config.mjs
+└── package.json
 ```
 
-## UI/UX Pro Max Skill
-
-Projeye [ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) skill'i eklendi (`.cursor/skills/ui-ux-pro-max/`).
-
-Cursor Agent, UI/tasarım işlerinde bu skill'i kullanır. Arama scriptleri için **Python 3** gerekir.
-
-```powershell
-# Örnek arama (skill klasöründen)
-python .cursor/skills/ui-ux-pro-max/scripts/search.py "consulting landing" --domain style
-```
-
-## Çalıştırma
-
-`index.html` dosyasını tarayıcıda açın veya yerel sunucu kullanın:
-
-```bash
-npx serve .
-```
+Yeni duyuru eklemek için `src/content/duyurular/` altına Markdown dosyası koyun.
 
 ## Domain (GitHub Pages)
 
-1. Repoyu GitHub'a push edin
-2. Settings → Pages → Source: `main` branch, `/ (root)`
-3. Custom domain: `www.deseconsulting.com`
-4. DNS'te şu kayıtları tanımlayın (domain sağlayıcınızda):
+1. Repo Settings → Pages → Source: **GitHub Actions**
+2. `main` branch'e push sonrası workflow `dist/` yayınlar
+3. `public/CNAME` → `www.deseconsulting.com`
 
 | Tip | Ad | Değer |
 |-----|-----|--------|
 | CNAME | www | `ugurdemir58.github.io` |
-| A (isteğe bağlı apex) | @ | GitHub Pages IP'leri |
 
-`CNAME` dosyası projede zaten `www.deseconsulting.com` olarak ayarlıdır.
+## Tasarım
 
-## Özelleştirme
+Renk ve tipografi: `design-system/dese-consulting/MASTER.md` (Lexend + Source Sans 3, primary `#0B3A4F`, accent `#B45309`).
 
-- **İletişim:** Telefon ve WhatsApp numaralarını `index.html` içinde güncelleyin
-- **Renkler:** `css/style.css` içindeki `:root` değişkenleri
-- **İstatistikler / duyurular:** Hero ve haber kartlarını kendi verilerinizle değiştirin
+## UI/UX Pro Max Skill
+
+Projeye [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) dahil edildi:
+
+`.cursor/skills/ui-ux-pro-max/`
+
+Cursor Agent, UI/tasarım işlerinde bu skill’i kullanır. Arama scriptleri için **Python 3** gerekir.
+
+```powershell
+# Skill’i yeniden kurmak / güncellemek
+npx ui-ux-pro-max-cli@latest init --ai cursor --force
+
+# Örnek arama
+python .cursor/skills/ui-ux-pro-max/scripts/search.py "consulting landing" --domain style
+python .cursor/skills/ui-ux-pro-max/scripts/search.py "B2B regulatory consulting" --design-system -p "Dese Consulting" --stack astro
+```

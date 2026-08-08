@@ -1,0 +1,399 @@
+---
+import { getCollection, render } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('duyurular', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const related = (await getCollection('duyurular'))
+  .filter((p) => !p.data.draft && p.id !== post.id)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('tr-TR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+}
+
+const canonical = new URL(`/duyurular/${post.id}/`, Astro.site).href;
+---
+
+<SiteLayout
+  title={`${post.data.title} | Dese Consulting`}
+  description={post.data.description}
+  canonical={canonical}
+  ogType="article"
+>
+  <main id="main" class="article-page">
+    <div class="article-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Anasayfa</a>
+          <span aria-hidden="true">/</span>
+          <a href="/#duyurular">Duyurular</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{post.data.category}</span>
+        </nav>
+        <p class="article-meta">
+          <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          <span class="article-meta-sep" aria-hidden="true">·</span>
+          <span>{post.data.category}</span>
+        </p>
+        <h1>{post.data.title}</h1>
+        <p class="article-lead">{post.data.description}</p>
+      </div>
+    </div>
+
+    <div class="container article-layout">
+      <article class="article-body prose">
+        <Content />
+
+        <aside class="article-cta" aria-label="İlgili hizmetler">
+          <h2>Kozmetik danışmanlık hizmetlerimiz</h2>
+          <p>STE, ÜGDR ve ÜTS süreçleriniz için profesyonel destek alın.</p>
+          <div class="article-cta-actions">
+            <a href="/#hizmetler" class="btn btn-accent">Hizmetlerimiz</a>
+            <a href="/#iletisim" class="btn btn-outline">İletişime geçin</a>
+          </div>
+        </aside>
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-block">
+          <h2>Son duyurular</h2>
+          <ul class="sidebar-list">
+            {
+              related.map((item) => (
+                <li>
+                  <time datetime={item.data.pubDate.toISOString()}>{formatDate(item.data.pubDate)}</time>
+                  <a href={`/duyurular/${item.id}/`}>{item.data.title}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        {
+          post.data.tags && post.data.tags.length > 0 && (
+            <div class="sidebar-block">
+              <h2>Etiketler</h2>
+              <ul class="tag-list">
+                {post.data.tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        <div class="sidebar-block sidebar-help">
+          <h2>STE / ÜGDR desteği</h2>
+          <p>Sorumlu teknik eleman ve ürün güvenlilik raporları hakkında bilgi alın.</p>
+          <a href="/#iletisim" class="btn btn-accent btn-block">Teklif alın</a>
+        </div>
+      </aside>
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="related-posts" aria-labelledby="related-heading">
+          <div class="container">
+            <h2 id="related-heading">İlgili duyurular</h2>
+            <div class="related-grid">
+              {related.map((item) => (
+                <article class="related-card">
+                  <time datetime={item.data.pubDate.toISOString()}>{formatDate(item.data.pubDate)}</time>
+                  <h3>
+                    <a href={`/duyurular/${item.id}/`}>{item.data.title}</a>
+                  </h3>
+                  <p>{item.data.description}</p>
+                  <a class="related-more" href={`/duyurular/${item.id}/`}>Devamını oku</a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </main>
+</SiteLayout>
+
+<style is:global>
+  .article-page {
+    padding-bottom: 4rem;
+  }
+
+  .article-hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 0%, rgba(20, 90, 115, 0.18), transparent 55%),
+      linear-gradient(160deg, #0b3a4f 0%, #145a73 55%, #0b3a4f 100%);
+    color: var(--white);
+    padding: calc(var(--header-h) + 2.5rem) 0 2.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 1.25rem;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--white);
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 0.85rem;
+  }
+
+  .article-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    line-height: 1.2;
+    max-width: 18ch;
+    margin-bottom: 0.85rem;
+  }
+
+  .article-lead {
+    max-width: 62ch;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 1.05rem;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .prose {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .prose > *:first-child {
+    margin-top: 0;
+  }
+
+  .prose h2 {
+    font-family: var(--font-head);
+    color: var(--ink);
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin: 2rem 0 0.85rem;
+  }
+
+  .prose p {
+    margin-bottom: 1rem;
+  }
+
+  .prose strong {
+    color: var(--ink);
+  }
+
+  .prose blockquote {
+    margin: 1.25rem 0;
+    padding: 1rem 1.15rem;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .prose em {
+    color: var(--muted);
+  }
+
+  .article-cta {
+    margin-top: 2.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .article-cta h2 {
+    font-family: var(--font-head);
+    color: var(--ink);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-cta p {
+    margin-bottom: 1rem;
+    color: var(--muted);
+  }
+
+  .article-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--primary);
+    color: var(--white);
+  }
+
+  .article-sidebar {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .sidebar-block {
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .sidebar-block:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .sidebar-block h2 {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.85rem;
+  }
+
+  .sidebar-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .sidebar-list time {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .sidebar-list a {
+    color: var(--primary);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .sidebar-list a:hover {
+    color: var(--accent);
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .tag-list li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.15rem;
+  }
+
+  .sidebar-help p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .related-posts {
+    margin-top: 3rem;
+    padding: 2.5rem 0 1rem;
+    border-top: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, var(--surface) 0%, var(--white) 100%);
+  }
+
+  .related-posts h2 {
+    font-family: var(--font-head);
+    color: var(--ink);
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+
+  .related-card time {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .related-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    line-height: 1.35;
+    margin-bottom: 0.55rem;
+  }
+
+  .related-card h3 a {
+    color: var(--primary);
+  }
+
+  .related-card h3 a:hover {
+    color: var(--accent);
+  }
+
+  .related-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .related-more {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .related-more:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .article-hero h1 {
+      max-width: none;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

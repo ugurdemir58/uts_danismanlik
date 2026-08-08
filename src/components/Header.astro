@@ -1,0 +1,66 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+const isHome = currentPath === '/' || currentPath === '';
+
+const home = (hash: string) => (isHome ? hash : `/${hash}`);
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Dese Consulting ana sayfa">
+      <span class="logo-mark" aria-hidden="true">DC</span>
+      <span class="logo-text">Dese Consulting</span>
+    </a>
+
+    <nav class="nav" aria-label="Ana menü">
+      <a href={home('#anasayfa')} class:list={['nav-link', { active: isHome }]}>Anasayfa</a>
+      <a href={home('#hakkimizda')} class="nav-link">Hakkımızda</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Hizmetler
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="dropdown-menu" role="menu">
+          <a href={home('#hizmetler')} role="menuitem">ÜTS Ürün Bildirimi</a>
+          <a href={home('#hizmetler')} role="menuitem">ÜTS Kayıt Başvurusu</a>
+          <a href={home('#hizmetler')} role="menuitem">Sorumlu Teknik Eleman</a>
+          <a href={home('#hizmetler')} role="menuitem">Ürün Güvenlilik Değerlendirme</a>
+          <a href={home('#hizmetler')} role="menuitem">Etiket ve İçerik Kontrolü</a>
+          <a href={home('#hizmetler')} role="menuitem">Tıbbi Cihaz Danışmanlığı</a>
+        </div>
+      </div>
+      <a href={home('#referanslar')} class="nav-link">Referanslar</a>
+      <a href={home('#duyurular')} class="nav-link">Duyurular</a>
+      <a href={home('#iletisim')} class="nav-link">İletişim</a>
+    </nav>
+
+    <a href={home('#iletisim')} class="btn btn-accent header-cta">Teklif Alın</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobil menü" hidden>
+  <a href={home('#anasayfa')}>Anasayfa</a>
+  <a href={home('#hakkimizda')}>Hakkımızda</a>
+  <a href={home('#hizmetler')}>Hizmetler</a>
+  <div class="mobile-sub">
+    <a href={home('#hizmetler')}>ÜTS Ürün Bildirimi</a>
+    <a href={home('#hizmetler')}>ÜTS Kayıt Başvurusu</a>
+    <a href={home('#hizmetler')}>Sorumlu Teknik Eleman</a>
+    <a href={home('#hizmetler')}>Ürün Güvenlilik Değerlendirme</a>
+    <a href={home('#hizmetler')}>Etiket ve İçerik Kontrolü</a>
+  </div>
+  <a href={home('#referanslar')}>Referanslar</a>
+  <a href={home('#duyurular')}>Duyurular</a>
+  <a href={home('#iletisim')}>İletişim</a>
+  <a href={home('#iletisim')} class="btn btn-accent">Teklif Alın</a>
+</nav>

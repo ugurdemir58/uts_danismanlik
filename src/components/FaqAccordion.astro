@@ -1,0 +1,23 @@
+---
+interface Props {
+  items: { question: string; answerHtml: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-list">
+  {
+    items.map((item, index) => (
+      <div class:list={['faq-item', { open: index === 0 }]}>
+        <button class="faq-question" type="button" aria-expanded={index === 0 ? 'true' : 'false'}>
+          {item.question}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" set:html={item.answerHtml} />
+        </div>
+      </div>
+    ))
+  }
+</div>
