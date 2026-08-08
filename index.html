@@ -3,40 +3,510 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UTS Danışmanlık</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-    }
-
-    main {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-    }
-  </style>
+  <meta name="description" content="Dese Consulting - Ürün Takip Sistemi kayıt, ürün bildirimi, sorumlu teknik eleman ve mevzuat danışmanlığı hizmetleri.">
+  <title>Dese Consulting | Ürün Takip Sistemi ve Mevzuat Danışmanlığı</title>
+  <link rel="canonical" href="https://www.deseconsulting.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.deseconsulting.com/">
+  <meta property="og:title" content="Dese Consulting | Ürün Takip Sistemi ve Mevzuat Danışmanlığı">
+  <meta property="og:description" content="ÜTS kayıt, ürün bildirimi, sorumlu teknik eleman ve mevzuat danışmanlığı hizmetleri.">
+  <meta property="og:site_name" content="Dese Consulting">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Dese Consulting | Ürün Takip Sistemi ve Mevzuat Danışmanlığı">
+  <meta name="twitter:description" content="ÜTS kayıt, ürün bildirimi, sorumlu teknik eleman ve mevzuat danışmanlığı hizmetleri.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <main>
-    <h1>Merhaba Dünya</h1>
+
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="https://www.deseconsulting.com/" class="logo" aria-label="Dese Consulting ana sayfa">
+        <span class="logo-mark" aria-hidden="true">DC</span>
+        <span class="logo-text">Dese Consulting</span>
+      </a>
+
+      <nav class="nav" aria-label="Ana menü">
+        <a href="#anasayfa" class="nav-link active">Anasayfa</a>
+        <a href="#hakkimizda" class="nav-link">Hakkımızda</a>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Hizmetler
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            <a href="#hizmetler" role="menuitem">ÜTS Ürün Bildirimi</a>
+            <a href="#hizmetler" role="menuitem">ÜTS Kayıt Başvurusu</a>
+            <a href="#hizmetler" role="menuitem">Sorumlu Teknik Eleman</a>
+            <a href="#hizmetler" role="menuitem">Ürün Güvenlilik Değerlendirme</a>
+            <a href="#hizmetler" role="menuitem">Etiket ve İçerik Kontrolü</a>
+            <a href="#hizmetler" role="menuitem">Tıbbi Cihaz Danışmanlığı</a>
+          </div>
+        </div>
+        <a href="#referanslar" class="nav-link">Referanslar</a>
+        <a href="#duyurular" class="nav-link">Duyurular</a>
+        <a href="#iletisim" class="nav-link">İletişim</a>
+      </nav>
+
+      <a href="#iletisim" class="btn btn-accent header-cta">Teklif Alın</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileNav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobil menü" hidden>
+    <a href="#anasayfa">Anasayfa</a>
+    <a href="#hakkimizda">Hakkımızda</a>
+    <a href="#hizmetler">Hizmetler</a>
+    <div class="mobile-sub">
+      <a href="#hizmetler">ÜTS Ürün Bildirimi</a>
+      <a href="#hizmetler">ÜTS Kayıt Başvurusu</a>
+      <a href="#hizmetler">Sorumlu Teknik Eleman</a>
+      <a href="#hizmetler">Ürün Güvenlilik Değerlendirme</a>
+      <a href="#hizmetler">Etiket ve İçerik Kontrolü</a>
+    </div>
+    <a href="#referanslar">Referanslar</a>
+    <a href="#duyurular">Duyurular</a>
+    <a href="#iletisim">İletişim</a>
+    <a href="#iletisim" class="btn btn-accent">Teklif Alın</a>
+  </nav>
+
+  <main id="main">
+    <!-- Hero: brand + headline + sentence + CTA only -->
+    <section class="hero" id="anasayfa">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="hero-brand reveal">Dese Consulting</p>
+        <h1 class="reveal reveal-delay-1">Ürün Takip Sistemi ve mevzuat danışmanlığı</h1>
+        <p class="hero-desc reveal reveal-delay-2">
+          Kozmetik, tıbbi cihaz ve gıda sektöründe ÜTS kayıt, ürün bildirimi ve sorumlu teknik eleman süreçlerinizde yanınızdayız.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#iletisim" class="btn btn-accent">Ücretsiz Danışmanlık</a>
+          <a href="#hizmetler" class="btn btn-ghost">Hizmetlerimiz</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust metrics (below fold) -->
+    <section class="trust-strip" aria-label="Güven göstergeleri">
+      <div class="container trust-grid">
+        <div class="trust-item reveal">
+          <strong>500+</strong>
+          <span>Başarılı ÜTS başvurusu</span>
+        </div>
+        <div class="trust-item reveal">
+          <strong>10+</strong>
+          <span>Yıllık deneyim</span>
+        </div>
+        <div class="trust-item reveal">
+          <strong>200+</strong>
+          <span>Danışılan firma</span>
+        </div>
+        <div class="trust-item reveal">
+          <strong>TİTCK</strong>
+          <span>Mevzuat uyumu</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="hakkimizda">
+      <div class="container about-grid">
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-panel">
+            <svg class="icon-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <p class="section-label">Hakkımızda</p>
+          <h2>Regülasyon süreçlerinizde güvenilir partneriniz</h2>
+          <p>
+            Dese Consulting olarak kozmetik, tıbbi cihaz ve gıda sektöründeki firmaların
+            Ürün Takip Sistemi (ÜTS) kayıt, ürün bildirimi ve mevzuat uyum süreçlerinde
+            profesyonel destek sunuyoruz.
+          </p>
+          <p>
+            TİTCK mevzuatına hakim uzman kadromuzla yasal yükümlülüklerinizi eksiksiz
+            yerine getirmenizi sağlıyor; denetimlere hazır olmanız için yanınızda duruyoruz.
+          </p>
+          <ul class="about-points">
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg>
+              <div>
+                <strong>Mevzuat takibi</strong>
+                <span>Güncel TİTCK duyuruları</span>
+              </div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <div>
+                <strong>Hızlı süreç</strong>
+                <span>Etkin başvuru yönetimi</span>
+              </div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <div>
+                <strong>Uyum odaklı</strong>
+                <span>Denetimlere hazırlık</span>
+              </div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <div>
+                <strong>Uzman kadro</strong>
+                <span>Alanında deneyimli ekip</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="hizmetler" class="services">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-label">Danışmanlık alanlarımız</p>
+          <h2>Sunduğumuz hizmetler</h2>
+          <p>ÜTS ve mevzuat süreçlerinizde ihtiyaç duyduğunuz danışmanlığı tek çatı altında sunuyoruz.</p>
+        </header>
+
+        <div class="services-list">
+          <article class="service-row reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>
+            </div>
+            <div class="service-body">
+              <h3>ÜTS Ürün Bildirimi</h3>
+              <p>Kozmetik ve tıbbi cihaz ürünlerinizin Ürün Takip Sistemi'ne eksiksiz bildirimini sağlıyoruz.</p>
+            </div>
+            <a href="#iletisim" class="service-link">Bilgi alın</a>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            </div>
+            <div class="service-body">
+              <h3>ÜTS Kayıt Başvurusu</h3>
+              <p>Firmanızın Ürün Takip Sistemi'ne kayıt sürecini baştan sona yönetiyoruz.</p>
+            </div>
+            <a href="#iletisim" class="service-link">Bilgi alın</a>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 14v3"/><path d="M9 17h6"/></svg>
+            </div>
+            <div class="service-body">
+              <h3>Sorumlu Teknik Eleman (STE)</h3>
+              <p>Kozmetik mevzuatına uygun STE görevlendirme ve danışmanlık hizmeti.</p>
+            </div>
+            <a href="#sss" class="service-link">SSS</a>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+            </div>
+            <div class="service-body">
+              <h3>Ürün Güvenlilik Değerlendirme (ÜGDR)</h3>
+              <p>Kozmetik ürünleriniz için yasal gerekliliklere uygun güvenlilik değerlendirme raporu.</p>
+            </div>
+            <a href="#iletisim" class="service-link">Bilgi alın</a>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <div class="service-body">
+              <h3>Etiket ve İçerik Kontrolü</h3>
+              <p>Ürün etiketlerinizin ve içerik listelerinizin mevzuata uygunluğunu kontrol ediyoruz.</p>
+            </div>
+            <a href="#iletisim" class="service-link">Bilgi alın</a>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="service-body">
+              <h3>Tıbbi Cihaz Danışmanlığı</h3>
+              <p>Tıbbi cihaz kayıt, bildirim ve ruhsatlandırma süreçlerinde kapsamlı destek.</p>
+            </div>
+            <a href="#iletisim" class="service-link">Bilgi alın</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-label">Çalışma sürecimiz</p>
+          <h2>Nasıl çalışıyoruz?</h2>
+          <p>Şeffaf adımlarla firmanızın mevzuat uyum sürecini yönetiyoruz.</p>
+        </header>
+        <ol class="process-steps">
+          <li class="reveal"><span class="step-num">01</span><h3>İhtiyaç analizi</h3><p>Mevcut durumunuzu ve ihtiyaçlarınızı birlikte değerlendiriyoruz.</p></li>
+          <li class="reveal"><span class="step-num">02</span><h3>Planlama</h3><p>Size özel yol haritası ve zaman çizelgesi oluşturuyoruz.</p></li>
+          <li class="reveal"><span class="step-num">03</span><h3>Uygulama</h3><p>Başvuru, bildirim ve raporlama süreçlerini yürütüyoruz.</p></li>
+          <li class="reveal"><span class="step-num">04</span><h3>Takip ve destek</h3><p>Sürekli mevzuat takibi ve güncelleme desteği sağlıyoruz.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="sss" class="faq">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-label">Sık sorulan sorular</p>
+          <h2>Sorumlu Teknik Eleman ve ÜGDR</h2>
+          <p>TİTCK Kozmetik Ürünler Dairesi'nin en sık sorulan sorularına yanıtlar.</p>
+        </header>
+
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button class="faq-question" type="button" aria-expanded="true">
+              Firmam ürün üretmiyor, sadece ithalat yapıyor. Sorumlu teknik eleman istihdam etmem gerekli midir?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Kozmetik Yönetmeliği Madde 13'e göre üreticinin uygun seviyede profesyonel yeterliğe sahip bir sorumlu teknik eleman bulundurması gerekir.</p>
+                <blockquote>
+                  <strong>Üretici tanımı (Madde 4):</strong> Bir ürünü üreten, imal eden, ıslah eden veya ürüne adını koymak suretiyle kendini üretici olarak tanıtan gerçek veya tüzel kişiyi; üreticinin Türkiye dışında olması halinde ithalatçıyı ifade eder.
+                </blockquote>
+                <p>Bu kapsamda kozmetik ürün <strong>imal eden ve/veya ithal eden</strong> tüm firmalar sorumlu teknik eleman istihdam etmek zorundadır.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Sorumlu teknik eleman olma şartları nelerdir?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Kozmetik Yönetmeliği Madde 13'e göre:</p>
+                <blockquote>
+                  <strong>Eczacı</strong> veya kozmetik alanında iki yıl fiilen çalışmış olduğunu belgelemek kaydıyla <strong>kimyager, biyokimyager, kimya mühendisi, biyolog veya mikrobiyolog</strong> sorumlu teknik eleman olarak görevlendirilebilir.
+                </blockquote>
+                <p>Sorumlu teknik eleman, piyasaya arz edilecek ürünün kozmetik mevzuatı, iyi imalat uygulamaları ve ilgili diğer mevzuata uygunluğunun kontrolünden sorumludur.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Ürün Güvenlilik Değerlendirme Raporunu kimler hazırlayabilir?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Kozmetik Yönetmeliği Madde 12'ye göre kozmetik ürün güvenlilik değerlendirmesi:</p>
+                <blockquote>
+                  <strong>Eczacılık diplomasına</strong> sahip bir kişi tarafından veya <strong>tıp, diş hekimliği, biyoloji, kimya, biyokimya, mikrobiyoloji veya eşdeğer diplomaya sahip</strong> toksikoloji dalında veya kozmetik ürün güvenlilik değerlendirmesi alanında sunulan teorik ve uygulamalı müfredat programını tamamlayanlara verilen bir belgeye sahip kişi tarafından yapılır.
+                </blockquote>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              ÜTS kaydı olmadan ürün bildirimi yapılabilir mi?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Hayır. Ürün Takip Sistemi'ne ürün bildirimi yapabilmek için öncelikle firmanızın sisteme kayıtlı olması ve gerekli yetki belgelerine sahip olması gerekmektedir. Kayıt sürecini tamamlamadan yapılan bildirimler geçersiz sayılır.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="news" id="duyurular">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-label">Duyurular</p>
+          <h2>Son haberler ve mevzuat güncellemeleri</h2>
+          <p>TİTCK duyuruları ve sektörel gelişmelerden haberdar olun.</p>
+        </header>
+        <div class="news-list">
+          <article class="news-item reveal">
+            <time datetime="2026-07-08">08.07.2026</time>
+            <h3><a href="#">TİTCK Sorumlu Teknik Eleman Yetki ve Sorumluluklarına İlişkin Kılavuz Yayımlandı</a></h3>
+            <p>Kozmetik Sorumlu Teknik Eleman Yetki ve Sorumluluklarına İlişkin Kılavuz resmi olarak yayımlandı.</p>
+          </article>
+          <article class="news-item reveal">
+            <time datetime="2026-06-25">25.06.2026</time>
+            <h3><a href="#">TİTCK Parfüm Alerjenlerinin Etiketlenmesine İlişkin Kılavuz Yayımlandı</a></h3>
+            <p>Kozmetik ürünlerde kullanılan parfüm alerjenlerinin etiketlenmesine ilişkin yeni kılavuz yayımlandı.</p>
+          </article>
+          <article class="news-item reveal">
+            <time datetime="2026-04-10">10.04.2026</time>
+            <h3><a href="#">2026 Yılı Birinci Üç Aylık Kozmetik Denetim Verileri Açıklandı</a></h3>
+            <p>Denetim Hizmetleri Başkan Yardımcılığı tarafından 2026 birinci çeyrek denetim verileri paylaşıldı.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="referanslar" class="references">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-label">Referanslarımız</p>
+          <h2>Güvenen firmalar</h2>
+          <p>Farklı sektörlerden firmaların tercih ettiği danışmanlık hizmeti.</p>
+        </header>
+        <ul class="ref-list">
+          <li class="reveal"><strong>Kozmetik firmaları</strong><span>150+</span></li>
+          <li class="reveal"><strong>Tıbbi cihaz</strong><span>80+</span></li>
+          <li class="reveal"><strong>Takviye edici gıda</strong><span>45+</span></li>
+          <li class="reveal"><strong>İthalatçı firmalar</strong><span>60+</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <div class="container">
+        <h2 id="cta-heading">ÜTS süreçlerinizde profesyonel destek alın</h2>
+        <p>Ücretsiz ön değerlendirme için bizimle iletişime geçin.</p>
+        <a href="#iletisim" class="btn btn-accent">Hemen iletişime geçin</a>
+      </div>
+    </section>
+
+    <section id="iletisim" class="contact">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">İletişim</p>
+          <h2>Bizimle iletişime geçin</h2>
+          <p>ÜTS kayıt, ürün bildirimi veya danışmanlık hizmetlerimiz hakkında bilgi almak için formu doldurun ya da doğrudan bize ulaşın.</p>
+          <ul class="contact-list">
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><strong>Adres</strong><span>İstanbul, Türkiye</span></div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div><strong>Telefon</strong><a href="tel:+905331575686">+90 (533) 157 56 86</a></div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+              <div><strong>E-posta</strong><a href="mailto:info@deseconsulting.com">info@deseconsulting.com</a></div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <div><strong>WhatsApp</strong><a href="https://wa.me/905331575686" target="_blank" rel="noopener noreferrer">+90 (533) 157 56 86</a></div>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Ad Soyad *</label>
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Adınız Soyadınız">
+            </div>
+            <div class="form-group">
+              <label for="company">Firma Adı</label>
+              <input type="text" id="company" name="company" autocomplete="organization" placeholder="Firma Adınız">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">E-posta *</label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="ornek@firma.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon *</label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="0 (5XX) XXX XX XX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">İlgilendiğiniz hizmet</label>
+            <select id="service" name="service">
+              <option value="">Seçiniz...</option>
+              <option value="uts-kayit">ÜTS Kayıt Başvurusu</option>
+              <option value="uts-bildirim">ÜTS Ürün Bildirimi</option>
+              <option value="ste">Sorumlu Teknik Eleman</option>
+              <option value="ugdr">Ürün Güvenlilik Değerlendirme</option>
+              <option value="etiket">Etiket ve İçerik Kontrolü</option>
+              <option value="tibbi-cihaz">Tıbbi Cihaz Danışmanlığı</option>
+              <option value="diger">Diğer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mesajınız *</label>
+            <textarea id="message" name="message" required placeholder="Talebinizi kısaca açıklayın..."></textarea>
+          </div>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+          <button type="submit" class="btn btn-accent btn-block">Gönder</button>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="https://www.deseconsulting.com/" class="logo">
+          <span class="logo-mark" aria-hidden="true">DC</span>
+          <span class="logo-text">Dese Consulting</span>
+        </a>
+        <p>Ürün Takip Sistemi kayıt, ürün bildirimi ve mevzuat danışmanlığı.</p>
+        <div class="social-links">
+          <a href="https://wa.me/905331575686" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <a href="mailto:info@deseconsulting.com" aria-label="E-posta">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Hizmetler</h4>
+        <ul>
+          <li><a href="#hizmetler">ÜTS Ürün Bildirimi</a></li>
+          <li><a href="#hizmetler">ÜTS Kayıt</a></li>
+          <li><a href="#hizmetler">Sorumlu Teknik Eleman</a></li>
+          <li><a href="#hizmetler">ÜGDR</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="#hakkimizda">Hakkımızda</a></li>
+          <li><a href="#referanslar">Referanslar</a></li>
+          <li><a href="#duyurular">Duyurular</a></li>
+          <li><a href="#sss">SSS</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <ul>
+          <li><a href="tel:+905331575686">+90 (533) 157 56 86</a></li>
+          <li><a href="mailto:info@deseconsulting.com">info@deseconsulting.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Dese Consulting. Tüm hakları saklıdır.</span>
+      <span>www.deseconsulting.com</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
