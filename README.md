@@ -55,13 +55,23 @@ Yeni duyuru eklemek için `src/content/duyurular/` altına Markdown dosyası koy
 
 ## Domain (GitHub Pages)
 
-1. Repo Settings → Pages → Source: **GitHub Actions**
-2. `main` branch'e push sonrası workflow `dist/` yayınlar
-3. `public/CNAME` → `www.deseconsulting.com`
+1. Repo **Settings → Pages**
+2. Source: **Deploy from a branch**
+3. Branch: **`gh-pages`** / folder: **`/` (root)**
+4. Custom domain: `www.deseconsulting.com` (CNAME dosyası `public/CNAME` içinde)
+
+### Cloudflare DNS (zorunlu)
+
+Domain Cloudflare’de. Şu kayıtları ekleyin (Proxy **DNS only** / gri bulut önerilir, en azından ilk kurulumda):
 
 | Tip | Ad | Değer |
 |-----|-----|--------|
-| CNAME | www | `ugurdemir58.github.io` |
+| CNAME | `www` | `ugurdemir58.github.io` |
+| CNAME | `@` (isteğe bağlı) | `ugurdemir58.github.io` |
+
+Apex (`@`) için Cloudflare “CNAME flattening” destekler. GitHub Pages A kayıtları da kullanılabilir.
+
+Push sonrası Actions workflow `dist/` içeriğini `gh-pages` branch’ine yayınlar.
 
 ## Tasarım
 
