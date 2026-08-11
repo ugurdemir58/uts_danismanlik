@@ -25,12 +25,10 @@ const home = (hash: string) => (isHome ? hash : `/${hash}`);
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
         </button>
         <div class="dropdown-menu" role="menu">
-          <a href={home('#hizmetler')} role="menuitem">ÜTS Ürün Bildirimi</a>
-          <a href={home('#hizmetler')} role="menuitem">ÜTS Kayıt Başvurusu</a>
-          <a href={home('#hizmetler')} role="menuitem">Sorumlu Teknik Eleman</a>
-          <a href={home('#hizmetler')} role="menuitem">Ürün Güvenlilik Değerlendirme</a>
-          <a href={home('#hizmetler')} role="menuitem">Etiket ve İçerik Kontrolü</a>
-          <a href={home('#hizmetler')} role="menuitem">Tıbbi Cihaz Danışmanlığı</a>
+          <a href={home('#kozmetik')} role="menuitem">Kozmetik Mevzuat Danışmanlığı</a>
+          <a href={home('#ilac')} role="menuitem">İlaç Ruhsatlandırma</a>
+          <a href={home('#takviye-edici-gida')} role="menuitem">Takviye Edici Gıda</a>
+          <a href={home('#tibbi-cihaz')} role="menuitem">Tıbbi Cihaz Mevzuat Danışmanlığı</a>
         </div>
       </div>
       <a href={home('#referanslar')} class="nav-link">Referanslar</a>
@@ -53,11 +51,10 @@ const home = (hash: string) => (isHome ? hash : `/${hash}`);
   <a href={home('#hakkimizda')}>Hakkımızda</a>
   <a href={home('#hizmetler')}>Hizmetler</a>
   <div class="mobile-sub">
-    <a href={home('#hizmetler')}>ÜTS Ürün Bildirimi</a>
-    <a href={home('#hizmetler')}>ÜTS Kayıt Başvurusu</a>
-    <a href={home('#hizmetler')}>Sorumlu Teknik Eleman</a>
-    <a href={home('#hizmetler')}>Ürün Güvenlilik Değerlendirme</a>
-    <a href={home('#hizmetler')}>Etiket ve İçerik Kontrolü</a>
+    <a href={home('#kozmetik')}>Kozmetik Mevzuat Danışmanlığı</a>
+    <a href={home('#ilac')}>İlaç Ruhsatlandırma</a>
+    <a href={home('#takviye-edici-gida')}>Takviye Edici Gıda</a>
+    <a href={home('#tibbi-cihaz')}>Tıbbi Cihaz Mevzuat Danışmanlığı</a>
   </div>
   <a href={home('#referanslar')}>Referanslar</a>
   <a href={home('#duyurular')}>Duyurular</a>
