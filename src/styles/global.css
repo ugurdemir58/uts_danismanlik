@@ -1,8 +1,11 @@
 :root {
   --primary: #0b3a4f;
   --primary-mid: #145a73;
-  --accent: #b45309;
-  --accent-hover: #92400e;
+  /* Consulting yellow accent (EY-inspired) */
+  --accent: #ffe600;
+  --accent-strong: #e6cf00;
+  --accent-ink: #0f172a;
+  --accent-muted: #c9b400;
   --ink: #0f172a;
   --text: #334155;
   --muted: #64748b;
@@ -61,7 +64,7 @@ a { color: inherit; text-decoration: none; }
   top: -100px;
   z-index: 2000;
   background: var(--accent);
-  color: var(--white);
+  color: var(--accent-ink);
   padding: 0.75rem 1rem;
   border-radius: 8px;
   font-weight: 600;
@@ -111,11 +114,12 @@ a { color: inherit; text-decoration: none; }
 
 .btn-accent {
   background: var(--accent);
-  color: var(--white);
+  color: var(--accent-ink);
 }
 
 .btn-accent:hover {
-  background: var(--accent-hover);
+  background: var(--accent-strong);
+  color: var(--accent-ink);
 }
 
 .btn-ghost {
@@ -172,8 +176,8 @@ a { color: inherit; text-decoration: none; }
   width: 38px;
   height: 38px;
   border-radius: 9px;
-  background: linear-gradient(145deg, var(--primary), var(--primary-mid));
-  color: var(--white);
+  background: var(--accent);
+  color: var(--accent-ink);
   font-family: var(--font-head);
   font-size: 0.75rem;
   font-weight: 700;
@@ -381,7 +385,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.035em;
   line-height: 1.05;
   margin-bottom: 1.25rem;
-  color: var(--white);
+  color: var(--accent);
 }
 
 .hero h1 {
@@ -448,7 +452,7 @@ section {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-muted);
   margin-bottom: 0.75rem;
 }
 
@@ -467,6 +471,27 @@ section {
   letter-spacing: -0.025em;
   line-height: 1.2;
   margin-bottom: 0.85rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.65rem;
+}
+
+.section-header h2::after,
+.about-content h2::after,
+.contact-info h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.5rem;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.section-header h2::after {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .section-header p {
@@ -607,7 +632,7 @@ section {
 }
 
 .service-link:hover {
-  color: var(--accent);
+  color: var(--accent-muted);
 }
 
 /* Process */
@@ -631,7 +656,7 @@ section {
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--accent-muted);
   margin-bottom: 0.75rem;
 }
 
@@ -677,7 +702,7 @@ section {
 .faq-question svg {
   flex-shrink: 0;
   margin-top: 0.15rem;
-  color: var(--accent);
+  color: var(--accent-muted);
   transition: transform var(--ease);
 }
 
@@ -727,7 +752,7 @@ section {
   font-family: var(--font-head);
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-muted);
   margin-bottom: 0.45rem;
 }
 
@@ -950,7 +975,7 @@ section {
 
 .social-links a:hover {
   background: var(--accent);
-  color: var(--white);
+  color: var(--accent-ink);
 }
 
 .footer-col h4 {

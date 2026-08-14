@@ -18,8 +18,10 @@
 |-------|-----|-----|
 | `--primary` | `#0B3A4F` | Brand, headers, footer |
 | `--primary-mid` | `#145A73` | Hover / mid surfaces |
-| `--accent` | `#B45309` | CTA (trust gold) |
-| `--accent-hover` | `#92400E` | CTA hover |
+| `--accent` | `#FFE600` | Consulting yellow (headings accent, CTA, marks) |
+| `--accent-strong` | `#E6CF00` | CTA hover |
+| `--accent-muted` | `#C9B400` | Labels / text accents on light backgrounds |
+| `--accent-ink` | `#0F172A` | Text on yellow surfaces |
 | `--ink` | `#0F172A` | Headings |
 | `--text` | `#334155` | Body |
 | `--muted` | `#64748B` | Secondary text |
